@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Metadata-->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <meta property="og:title" content="Restaurant Listing" />
+    <meta property="og:description" content="restoran yang ingin saya kunjungi coy" />
+    <meta property="og:image" content="{{ url_for('static', filename='img/banner.jpg') }}" />
+    <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico') }}" type="image/x-icon">
+    <!-- Judul -->
+    <title>Showing the map</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <!-- Mapbox library imports -->
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css" rel="stylesheet" />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js"></script>
+    <!-- Jquery -->
+    <script src=" https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- JS -->
+    <script src="{{ url_for('static', filename = 'js/main.js') }}"></script>
+    <!-- CSS-->
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/style.css') }}">
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="banner">
+            <div class="d-flex flex-column align-items-center" style="
+      background-color: rgba(0, 0, 0, 0.5);
+      width: 100%;
+      height: 100%;
+    ">
+                <h1 class="title mt-5 mb-2">Restoran Map</h1>
+            </div>
+        </div>
+        <div id="map"></div>
+
+        <div class="restaurant-list" id="restaurant-box">
+            <div class="card" id="card-0">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <a href="#" class="restaurant-title disabled">The Best Restaurant</a>
+                    </h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Ramen</h6>
+                    <p class="card-text">Address of the restaurant</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container m-5">
+        <!-- Button trigger modal -->
+        <div align="center">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Buat Data Restoran
+            </button>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="card" style="margin-bottom: 10px;">
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <label for="input-name" class="form-label">Nama</label>
+                                    <input type="text" class="form-control" id="input-name" placeholder="Nama restoran">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="input-categories" class="form-label">Kategori</label>
+                                    <input type="text" class="form-control" id="input-categories"
+                                        placeholder="Kategori restoran">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="input-location" class="form-label">Lokasi</label>
+                                    <input type="text" class="form-control" id="input-location"
+                                        placeholder="Lokasi restoran">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="input-latitude" class="form-label">Latitude</label>
+                                    <input type="number" class="form-control" id="input-latitude"
+                                        placeholder="Latitude restoran">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="input-longitude" class="form-label">Longitude</label>
+                                    <input type="number" class="form-control" id="input-longitude"
+                                        placeholder="Longitude restoran">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary"
+                                    onclick="create_restaurant();">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
